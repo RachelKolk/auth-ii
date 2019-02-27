@@ -68,6 +68,35 @@ server.post('/api/login', (req, res) => {
       });
 });
 
+//middleware to check for authentication token for restricted access retrieval
+function restricted(req, res, next) {
+    const token = req.headers.authorization;
+
+    if (token) {
+        jwt.verify(token, secret, (err, decodedToken) => {
+            if (err) {
+                console.log(err);
+                res.status(401).json({message: 'You shall not pass!'});
+            } else {
+                req.decodedJwt = decodedToken;
+                next();
+            }
+        });
+    } else {
+        res.status(401).json({message: 'You shall not pass!'});
+    }
+}
+
+//if the user is logged in they will be able to see this api
+server.get('/api/users', restricted, (req, res) => {
+    Users.find()
+      .then(users => {
+          res.json({users, decodedToken: req.decodedJwt});
+      })
+      .catch(err => res.send(err));
+});
+
+
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => console.log(`\n >>** Running on port ${port} **<< \n`));
