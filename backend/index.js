@@ -1,8 +1,9 @@
-const express = require('express');
+ const express = require('express');
 const helmet = require('helmet');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const db = require('./database/dbConfig.js');
 
 const server = express();
 
@@ -15,4 +16,4 @@ server.get('/', (req, res) => {
 
 
 const port = process.env.PORT || 3000;
-server.listen(port, () => console.log(`\n >>** Running on port ${port} **<<\n`));
+server.listen(port, () => console.log(`\n >>** Running on port ${port} **<< \n`));
