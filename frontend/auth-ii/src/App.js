@@ -19,9 +19,9 @@ class App extends Component {
       <div className="App">
         <header>
         <nav>
-          <NavLink to="/register">Register</NavLink>
+          <NavLink to="/signup">Register</NavLink>
 
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/signin">Login</NavLink>
 
           <NavLink to="/users">Users</NavLink>
 
@@ -30,8 +30,8 @@ class App extends Component {
         </header>
 
         <main>
-          <Route path="/register" component={RegistrationForm}/>
-          <Route path="/login" component={LoginForm}/>
+          <Route path="/signup" component={RegistrationForm}/>
+          <Route path="/signin" component={LoginForm}/>
           <Route path="/users" component={Users}/>
         </main>
       </div>
