@@ -20,19 +20,22 @@ class App extends Component {
         <header>
         <nav>
           <NavLink to="/signup">Register</NavLink>
-
+          &nbsp;|&nbsp;
           <NavLink to="/signin">Login</NavLink>
-
+          &nbsp;|&nbsp;
           <NavLink to="/users">Users</NavLink>
-
-          <button>Logout</button>
+          &nbsp;|&nbsp;
+          <button onClick={this.logout}>Logout</button>
         </nav>
         </header>
 
         <main>
-          <Route path="/signup" component={RegistrationForm}/>
-          <Route path="/signin" component={LoginForm}/>
-          <Route path="/users" component={Users}/>
+          <Route exact path="/signup"
+            render={props => <RegistrationForm {...props}/> } />
+          <Route path="/signin" 
+            render={props => <LoginForm {...props} /> } />
+          <Route path="/users"
+            render={props => <Users {...props} /> } />
         </main>
       </div>
     );

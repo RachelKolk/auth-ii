@@ -1,22 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 
-class LoginForm extends React.Component {
+class RegistrationForm extends React.Component {
     state = {
-        user: {
+        
             username: '',
             password: '',
             department: ''
-        }
+        
         
     };
 
     handleChange = e => {
-        this.serState({
-            user: {
-                ...this.state.user,
-                [e.traget.name]: e.target.value
-            }
+        this.setState({
+            
+                ...this.state,
+                [e.target.name]: e.target.value
+            
         });
     }
 
@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div className="Login">
-                <h3>Please login</h3>
+                <h3>Sign Up to Register Your Account</h3>
 
                 <form onSubmit={this.handleSubmit}>
                 
@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
                         <input 
                             name="password"
                             id="password"
-                            placeholder="enter your password"
+                            placeholder="enter a password"
                             type="password"
                             value={this.state.password}
                             onChange={this.handleChange}
@@ -84,4 +84,4 @@ class LoginForm extends React.Component {
     }
 }
 
-export default LoginForm;
+export default RegistrationForm;
