@@ -8,7 +8,11 @@ class Users extends React.Component {
         users: [],
     };
 
-    
+    componentDidMount() {
+        axios.get('/users').then(res => {
+            this.setState({users: res.data.users});
+        });
+    }
 
     render () {
         return (
@@ -24,11 +28,7 @@ class Users extends React.Component {
         );
     }
 
-    componentDidMount() {
-        axios.get('/users').then(res => {
-            this.setState({users: res.data.users});
-        });
-    }
+   
 
 }
 

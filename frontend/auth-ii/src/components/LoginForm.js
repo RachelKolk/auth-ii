@@ -4,8 +4,8 @@ import axios from 'axios';
 class LoginForm extends React.Component {
     state = {
         
-            username: 'rkolk',
-            password: 'tysoncat',
+            username: '',
+            password: '',
             
         
         
